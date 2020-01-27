@@ -18,7 +18,8 @@
 <div class="areaAdmin" >
 
    <header>
-      <nav class="navbarAdmin container">
+      <nav class="navbar
+       container">
          <ul class="row">
             <li class="homeYTransf col h1">
                <a href="index.php?page=home">Yes Transfert</a>
