@@ -250,7 +250,7 @@ function mailCreate($upload, $mail_exp, $subject, $message) {
         <td class="esd-stripe" esd-custom-block-id="7394" align="center">
         <table class="es-footer-body" width="800" cellspacing="0" cellpadding="0" bgcolor="#ffffff" align="center">
         <tbody>
-        <tr>
+        <tr>true
         <td class="esd-structure es-p40t es-p40b es-p40r es-p40l" align="left">
         <table width="100%" cellspacing="0" cellpadding="0">
         <tbody>
@@ -261,7 +261,7 @@ function mailCreate($upload, $mail_exp, $subject, $message) {
         <tr>
         <td class="esd-block-text footer-mail" align="center">
         <p>Yes Transfert © 2020<b></p>
-        <a href="' . $upload . '" class="btnLink" >Cliquez ici</a>
+        <a href="' . $upload . '" class="btnLink">Cliquez ici</a>
         </p><p>Isabelle, Johanna, Thomas, Anthony @ ACS Mulhouse 2020</p>
         </td>
         </tr>
@@ -285,6 +285,7 @@ function mailCreate($upload, $mail_exp, $subject, $message) {
         </table>
     </div>
 </body>';
+
 return $mailbody;
 }
 
