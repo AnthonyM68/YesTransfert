@@ -40,7 +40,7 @@ function checkError($displayDivError, $divResponseError, $closeDiv)
 ////////////////////////////////////////////////////////////////////////////
 //On test que le formualaire a bien été soumis et qu'il ne soit pas vide
 if (isset($_POST['uploadform']) && !empty($_POST)) {
-    
+
     //check email expéditeur
     if (!empty($_POST['mail_exp'])) {
         if (filter_var($_POST['mail_exp'], FILTER_VALIDATE_EMAIL)) {
@@ -81,11 +81,11 @@ if (isset($_POST['uploadform']) && !empty($_POST)) {
             if (in_array($extension_upload, $extensions_autorisees)) {
                 //Si le format est autorisé on Delete l'extention temporaire du fichier créer dans le dossier temporaire de php
                 $deleteExtension = str_replace('.tmp', '', $_FILES['zip']['tmp_name']);
-                //on récupère alors le nom du fichier temporaire sans extension 
+                //on récupère alors le nom du fichier temporaire sans extension
                 $nameTmp = basename($deleteExtension);
 
-                
-                
+
+
                 //on instancie un nouveau zip
                 $zip = new ZipArchive;
                 //on lui indique le chemin de sortis Uploads/son_nom_temporaire.zip
@@ -107,7 +107,7 @@ if (isset($_POST['uploadform']) && !empty($_POST)) {
                     $displayDivError .= $divResponseError . 'Echec de génération fichier zip' . $closeDiv;
                 }
                 //on récupère le chemin du fichier que l'on insert dans le tableau tabValue pour la BDD
-                $zip =  "uploads/" . $nameTmp . ".zip";
+                $zip =  "Uploads/" . $nameTmp . ".zip";
                 $tabValue['zip'] = $zip;
             } else {
                 $displayDivError .= $divResponseError . 'Extension de format non valide' . $closeDiv;
@@ -123,8 +123,8 @@ if (isset($_POST['uploadform']) && !empty($_POST)) {
     //si le sujet est vide on indique le sujet générique
     if (empty($_POST['sujet'])) {
         $tabValue['sujet'] = $sujetGen;
-    } 
-    else 
+    }
+    else
     {//sinon on indique la saisie de l'utilisateur
         $tabValue['sujet'] = $_POST['sujet'];
         $subject = $_POST['sujet'];
@@ -133,7 +133,7 @@ if (isset($_POST['uploadform']) && !empty($_POST)) {
     if (empty($_POST['message'])) {
         $tabValue['message'] = $messageGen;
     }
-    else 
+    else
     {//sinon on indique la saisie de l'utilisateur
         $tabValue['message'] = $_POST['message'];
         $message = $_POST['message'];
@@ -147,7 +147,7 @@ if (isset($_POST['uploadform']) && !empty($_POST)) {
     if ($_SERVER['SERVER_NAME'] === "anthonym.promo-36.codeur.online")
     {
         $upload = 'https://anthonym.promo-36.codeur.online/YesTransfert/index.php?page=download&link=' . $nameTmp . '.zip';
-    }  
+    }
     //si serveur local
     else if ($_SERVER['SERVER_NAME'] === "localhost")
     {

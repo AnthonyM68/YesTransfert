@@ -45,5 +45,7 @@ client_list.sql
 composer.lock
 composer.json
 distant_config.php
+/vendor/
+/Uploads/
 /vendor/* /
 /Uploads/* /
