@@ -3,7 +3,7 @@
 <div class="container">
     <div class="wrapper">
         <form method="POST" id="contactform" class="form-signin" enctype="multipart/form-data">
-            <h2 class="form-signin-heading">Séléctionnez votre fichier</h2>
+            <h2 class="form-signin-heading">Sélectionnez votre fichier</h2>
             <input type="email" name="mail_exp" class="form-control" placeholder="<?= $emptyExp ?>" /> 
             <input type="text" name="mail_dest" class="form-control" placeholder="<?= $emptyDest ?>"  />
             <input type="hidden" name="MAX_FILE_SIZE" value="2000000" />

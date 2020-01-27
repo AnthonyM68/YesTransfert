@@ -1,4 +1,5 @@
 <?php require_once "headerAdmin.php";
+require_once "Models/admin.php";
 
 echo '<div class="d-flex justify-content-center"> <h3> Bonjour ' . $_SESSION['login'] . ' ! </h3></div>';
 
@@ -44,7 +45,7 @@ $delete = delete($pdo);
                <?php $id = $key['id']; ?>
 
                <form action="" method="GET">
-                  <a href="index.php?page=admin&id=<?= $id; ?> onclick='return confirm("Voulez-vous supprimer cet élément !?")">Delete</a>
+                  <a href="index.php?page=admin&id=<?= $id; ?>" onclick="return confirm('Voulez-vous supprimer cet élément !?')">Delete</a>
                </form>
             </td>
 
@@ -57,7 +58,7 @@ $delete = delete($pdo);
 
             if ($_GET['id']){
                $id = $_GET['id'];
-               header('Location: Admin&id=');
+               header('Location: Admin');
                echo "l'élément avec l'id :$id à bien été supprimé !";
             }
             else{

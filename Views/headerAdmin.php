@@ -13,23 +13,6 @@
 </head>
 
 <body>
-
-
-<div class="area">
-    <ul class="circles">
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-    </ul>
-</div>
-
    <header>
       <nav class="navbarAdmin container">
          <ul class="row">

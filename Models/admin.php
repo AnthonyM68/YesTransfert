@@ -33,6 +33,7 @@ function listData($pdo) {
 
 // Suprime une entrée de la BDD
 
+
 function delete($pdo) {
 
    $req = $pdo->prepare('DELETE FROM `client_list` WHERE `id` = :id');
