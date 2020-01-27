@@ -1,0 +1,371 @@
+body {
+   width: 100%;
+   height: 100%;
+}
+
+.form-signin-heading{
+   font-size: 25px;
+}
+
+/******* form ******/
+form {
+   margin: auto;
+   background-color: #ecf0f1;
+   padding: 20px;
+   border-radius: 10px;
+   border: solid grey 1px;
+}
+.wrapper {
+   margin-top: 80px;
+   margin-bottom: 80px;
+}
+.form-signin {
+   padding: 15px 35px 45px;
+   margin: 0 auto;
+   background-color: #fff;
+   border: 1px solid rgba(0, 0, 0, 0.1);
+}
+.form-signin-heading {
+   margin-bottom: 30px;
+}
+.form-control {
+   position: relative;
+   font-size: 14px;
+   height: auto;
+   padding: 6px;
+   margin: 5px;
+}
+.response-valid  {
+   border-radius: 5px;
+   -webkit-border-radius: 5px;
+   -moz-border-radius: 5px;
+   -ms-border-radius: 5px;
+   -o-border-radius: 5px;
+   color: #679c4d;
+   background-color: #c8fb19;
+   text-align: center;
+}
+.response-error{
+   border-radius: 5px;
+   -webkit-border-radius: 5px;
+   -moz-border-radius: 5px;
+   -ms-border-radius: 5px;
+   -o-border-radius: 5px;
+   color: #930031;
+   background-color: #ff7d7d;
+   text-align: center;
+}
+
+.max-file-size {
+   margin-left: 20px;
+}
+
+/*******DOWNLOAD*************/
+.container-message{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+}
+.message-download{
+   border:1px solid  rgba(0, 0, 255, .2);
+   box-shadow: 6px 6px 2px 1px rgba(0, 0, 255, .2);
+   background-color: rgba(74, 88, 128, 0.774);
+   color: #fff;
+   padding:5px;
+   border-radius:10px;
+   -webkit-border-radius:10px;
+   -moz-border-radius:10px;
+   -ms-border-radius:10px;
+   -o-border-radius:10px;
+   width:500px;
+   text-align:center;
+}
+.btn-download{
+   border:1px solid  rgba(0, 0, 255, .2);
+   box-shadow: 6px 6px 2px 1px rgba(0, 0, 255, .2);
+   background-color: rgba(74, 88, 128, 0.774);
+   color: #fff;
+   padding:5px;
+   margin:25px;
+   border-radius:10px;
+   -webkit-border-radius:10px;
+   -moz-border-radius:10px;
+   -ms-border-radius:10px;
+   -o-border-radius:10px;
+   width:100px;
+}
+/*******LOGIN****************/
+
+input[type="text"] {
+   margin-bottom: -1px;
+   border-bottom-left-radius: 0;
+   border-bottom-right-radius: 0;
+}
+
+input[type="password"] {
+   margin-bottom: 20px;
+   border-top-left-radius: 0;
+   border-top-right-radius: 0;
+}
+
+/****** navbar home ********/
+
+.navbar {
+   background-color: rgba(74, 88, 128, 0.774);
+   border-radius: 0 0 10px 10px;
+   -webkit-border-radius: 0 0 10px 10px;
+   -moz-border-radius: 0 0 10px 10px;
+   -ms-border-radius: 0 0 10px 10px;
+   -o-border-radius: 0 0 10px 10px;
+}
+
+.navbar {
+   z-index: 1;
+}
+
+.navbar a:hover {
+   color: #fff;
+   text-decoration: none;
+}
+
+.title-YesTransfert {
+   color: #fff;
+   font-size: 2em;
+}
+
+.title-Admin {
+   color: #fff;
+}
+
+/****** navbar session admin ********/
+
+.navbarAdmin {
+   background-color: #444d66;
+   border-radius: 10px;
+   padding: 8px 16px;
+}
+
+.navbarAdmin ul {
+   list-style-type: none;
+   position: relative;
+   width: 100%;
+   margin-bottom: 0;
+}
+
+.navbarAdmin ul li {
+   margin-right: 0;
+}
+
+.navbarAdmin ul li a {
+   color: white;
+}
+
+.navbarAdmin ul li a:hover {
+   color: white;
+   text-decoration: none;
+}
+
+.homeYTransf {
+   position: relative;
+   text-align: center;
+}
+
+/****** page home *****/
+
+#adminForm {
+   margin-top: 6rem;
+}
+
+/****** fond d'ecran *****/
+
+.area {
+   background: #f5f6fa;
+   background: -webkit-linear-gradient(to left, #8f94fb, #273c75);
+   width: 100%;
+   height: 100%;
+   padding: 0;
+   margin: 0;
+}
+
+.circles {
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   overflow: hidden;
+   margin: 0;
+   padding: 0;
+}
+
+.circles li {
+   position: absolute;
+   display: block;
+   list-style: none;
+   width: 20px;
+   height: 20px;
+   background: rgba(39, 60, 117, 0.5);
+   animation: animate 25s linear infinite;
+   bottom: -150px;
+}
+
+.circles li:nth-child(1) {
+   left: 25%;
+   width: 80px;
+   height: 80px;
+   animation-delay: 0s;
+}
+
+.circles li:nth-child(2) {
+   left: 10%;
+   width: 20px;
+   height: 20px;
+   animation-delay: 2s;
+   animation-duration: 12s;
+}
+
+.circles li:nth-child(3) {
+   left: 70%;
+   width: 20px;
+   height: 20px;
+   animation-delay: 4s;
+}
+
+.circles li:nth-child(4) {
+   left: 40%;
+   width: 60px;
+   height: 60px;
+   animation-delay: 0s;
+   animation-duration: 18s;
+}
+
+.circles li:nth-child(5) {
+   left: 65%;
+   width: 20px;
+   height: 20px;
+   animation-delay: 0s;
+}
+
+.circles li:nth-child(6) {
+   left: 75%;
+   width: 110px;
+   height: 110px;
+   animation-delay: 3s;
+}
+
+.circles li:nth-child(7) {
+   left: 35%;
+   width: 150px;
+   height: 150px;
+   animation-delay: 7s;
+}
+
+.circles li:nth-child(8) {
+   left: 50%;
+   width: 25px;
+   height: 25px;
+   animation-delay: 15s;
+   animation-duration: 45s;
+}
+
+.circles li:nth-child(9) {
+   left: 20%;
+   width: 15px;
+   height: 15px;
+   animation-delay: 2s;
+   animation-duration: 35s;
+}
+
+.circles li:nth-child(10) {
+   left: 85%;
+   width: 150px;
+   height: 150px;
+   animation-delay: 0s;
+   animation-duration: 11s;
+}
+
+@keyframes animate {
+   0% {
+      transform: translateY(0) rotate(0deg);
+      opacity: 1;
+      border-radius: 0;
+   }
+   100% {
+      transform: translateY(-1000px) rotate(720deg);
+      opacity: 0;
+      border-radius: 50%;
+   }
+}
+
+/****** footer *******/
+
+footer {
+   position: fixed;
+   height: auto;
+   bottom: 0;
+   text-align: center;
+   background-color: rgba(74, 88, 128, 0.774);
+   border-radius: 10px 10px 0 0;
+   -webkit-border-radius: 10px 10px 0 0;
+   -moz-border-radius: 10px 10px 0 0;
+   -ms-border-radius: 10px 10px 0 0;
+   -o-border-radius: 10px 10px 0 0;
+   color: #fff;
+}
+
+/*Extra small devices (portrait phones, less than 576px)
+  No media query for `xs` since this is the default in Bootstrap
+  Small devices (landscape phones, 576px and up)*/
+@media (min-width: 389px) {
+   .form-signin-heading{
+      font-size:15px;
+   }
+   .form-signin {
+      max-width: 280px;
+   }
+}
+@media (min-width: 480px) {
+   .form-signin-heading{
+      font-size:15px;
+   }
+   .form-signin {
+      max-width: 280px;
+   }
+}
+@media (min-width: 576px) {
+   .form-signin-heading{
+      font-size:15px;
+   }
+   .form-signin {
+      max-width: 280px;
+   }
+}
+@media (min-width: 640px) {
+   
+   .form-signin {
+      max-width: 280px;
+   }
+}
+/*Medium devices (tablets, 768px and up)*/
+@media (min-width: 768px) {
+   .form-signin {
+      max-width: 380px;
+   }
+}
+/*Large devices (desktops, 992px and up)*/
+@media (min-width: 992px) {
+   .form-signin {
+      max-width: 380px;
+   }
+}
+/*Extra large devices (large desktops, 1200px and up)*/
+@media (min-width: 1200px) {
+   .form-signin {
+      max-width: 380px;
+   }
+}
