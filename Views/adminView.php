@@ -5,6 +5,8 @@ require_once('Models/admin.php');
 echo "<h3> Bonjour " . $_SESSION['login'] . " ! </h3>";
 
 $data = listData($pdo);
+$delete = delete($pdo);
+
 ?>
 
 <table>
@@ -40,9 +42,32 @@ $data = listData($pdo);
 
          <?php endforeach; ?>
 
+            <td>
+               <?php $id = $key['id']; ?>
+
+               <form action="" method="GET">
+                  <a href="index.php?page=admin&id=<?= $id; ?> onclick='return confirm("Voulez-vous supprimer cet élément !?")">Delete</a>
+               </form>
+            </td>
+
          <tr>
 
       <?php endforeach; ?>
+
+      <?php
+         if (isset($_GET['id']) && !empty($_GET['id'])) {
+
+            if ($_GET['id']){
+               $id = $_GET['id'];
+               header('Location: Admin&id=');
+               echo "l'élément avec l'id :$id à bien été supprimé !";
+            }
+            else{
+               echo "ça marche pas";
+            }
+         }
+      ?>
+
 
    <?php endif; ?>
    </tbody>

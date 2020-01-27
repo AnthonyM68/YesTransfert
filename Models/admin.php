@@ -30,3 +30,20 @@ function listData($pdo) {
    $data = $req->fetchAll();
    return $data;
 }
+
+// Suprime une entrée de la BDD
+
+function delete($pdo) {
+
+   $req = $pdo->prepare('DELETE FROM `client_list` WHERE `id` = :id');
+
+   $req->bindValue(':id', $_GET["id"], PDO::PARAM_INT);
+
+   $ok = $req->execute();
+
+   if ($ok === false) {
+      throw new Exception("Elément non trouvé dans la BDD");
+   }
+
+   return $ok;
+}
