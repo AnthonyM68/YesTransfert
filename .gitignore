@@ -1,0 +1,49 @@
+# Créé par https://www.gitignore.io/api/windows,visualstudiocode
+# Modifier sur https://www.gitignore.io/?templates=windows,visualstudiocode
+
+### VisualStudioCode ###
+.vscode / *
+! .vscode / settings.json
+! .vscode / tasks.json
+! .vscode / launch.json
+! .vscode / extensions.json
+
+### VisualStudioCode Patch ###
+# Ignorer tout l'historique local des fichiers
+.histoire
+
+### Les fenêtres ###
+# Fichiers de cache de vignettes Windows
+Thumbs.db
+Thumbs.db: cryptable
+ehthumbs.db
+ehthumbs_vista.db
+
+# Fichier de vidage
+* .stackdump
+
+# Fichier de configuration de dossier
+[Dd] esktop.ini
+
+# Corbeille utilisée sur les partages de fichiers
+$ RECYCLE.BIN /
+
+# Fichiers Windows Installer
+*.taxi
+* .msi
+* .msix
+* .msm
+* .msp
+
+# Raccourcis Windows
+* .lnk
+
+# Fin de https://www.gitignore.io/api/windows,visualstudiocode
+# User
+config.php
+client_list.sql
+composer.lock
+composer.json
+distant_config.php
+/vendor*/ /
+/uploads*/ /
