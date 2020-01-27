@@ -285,7 +285,6 @@ function mailCreate($upload, $mail_exp, $subject, $message) {
         </table>
     </div>
 </body>';
-
 return $mailbody;
 }
 

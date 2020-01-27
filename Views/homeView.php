@@ -1,6 +1,5 @@
 <?php require_once "header.php"; ?>
 
-
 <div class="container">
     <div class="wrapper">
         <form method="POST" id="contactform" class="form-signin" enctype="multipart/form-data">

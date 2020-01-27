@@ -15,11 +15,23 @@
 <body>
 
 
-<div class="areaAdmin" >
+<div class="area">
+    <ul class="circles">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</div>
 
    <header>
-      <nav class="navbar
-       container">
+      <nav class="navbarAdmin container">
          <ul class="row">
             <li class="homeYTransf col h1">
                <a href="index.php?page=home">Yes Transfert</a>
