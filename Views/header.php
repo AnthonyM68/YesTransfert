@@ -8,7 +8,6 @@
    <title>Yes Transfert</title>
    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/css/bootstrap.min.css" integrity="sha384-SI27wrMjH3ZZ89r4o+fGIJtnzkAnFs3E4qz9DIYioCQ5l9Rd/7UAa8DHcaL8jkWt" crossorigin="anonymous" />
    <link rel="stylesheet" href="Assets/css/style.css">
-   
 </head>
 
 <body>
@@ -18,3 +17,17 @@
          <a href="index.php?page=login" class="title-Admin">Admin</a>
       </nav>
    </header>
+   <div class="area">
+    <ul class="circles">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</div>

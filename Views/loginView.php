@@ -15,7 +15,7 @@
          <span class="help-block"><?php echo $champVide . $erreur; ?></span>
       </div>
       <div class="form-group">
-         <input type="submit" class="btn btn-primary" value="Login">
+         <input type="submit" class="btn btn-primary form-control" value="Login">
       </div>
    </form>
 </div>

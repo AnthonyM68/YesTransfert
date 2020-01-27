@@ -23,6 +23,22 @@ function mailCreate($upload, $mail_exp, $subject, $message) {
     </ul>
 </div>
 <style>
+.alignement{
+   position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+}
+.header-mail{
+      padding:20px; 
+      background-color: rgba(74, 88, 128, 0.774);
+      color: #fff;
+      font-size:30px;
+}
 .area {
     background: #f5f6fa;
     background: -webkit-linear-gradient(to left, #8f94fb, #273c75);
@@ -127,6 +143,11 @@ function mailCreate($upload, $mail_exp, $subject, $message) {
    animation-delay: 0s;
    animation-duration: 11s;
 }
+.footer-mail{
+   padding:20px; 
+   background-color: rgba(74, 88, 128, 0.774);
+   color: #fff;
+}
 
 @keyframes animate {
    0% {
@@ -140,27 +161,34 @@ function mailCreate($upload, $mail_exp, $subject, $message) {
       border-radius: 50%;
    }
 }
-    
-    @keyframes animate {
-        0% {
-           transform: translateY(0) rotate(0deg);
-           opacity: 1;
-           border-radius: 0;
-        }
-        100% {
-           transform: translateY(-1000px) rotate(720deg);
-           opacity: 0;
-           border-radius: 50%;
-        }
-     }</style>
-    <div class="es-wrapper-color" style="position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    -webkit-transform: translate(-50%, -50%);
-    -moz-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    -o-transform: translate(-50%, -50%);">
+@keyframes animate {
+   0% {
+      transform: translateY(0) rotate(0deg);
+      opacity: 1;
+      border-radius: 0;
+   }
+   100% {
+      transform: translateY(-1000px) rotate(720deg);
+      opacity: 0;
+      border-radius: 50%;
+   }
+}
+.btnLink {
+   border:1px solid  rgba(0, 0, 255, .2); 
+   box-shadow: 6px 6px 2px 1px rgba(0, 0, 255, .2);
+   background-color: rgba(74, 88, 128, 0.774);
+   color: #fff;
+   padding:10px;
+   margin:25px;
+   border-radius:10px;
+   -webkit-border-radius:10px;
+   -moz-border-radius:10px;
+   -ms-border-radius:10px;
+   -o-border-radius:10px;
+   width:100px;
+}
+     </style>
+    <div class="es-wrapper-color alignement">
         <table cellpadding="0" cellspacing="0" class="es-footer esd-footer-popover" align="center">
         <tbody>
         <tr>
@@ -168,7 +196,7 @@ function mailCreate($upload, $mail_exp, $subject, $message) {
         <table class="es-footer-body" width="800" cellspacing="0" cellpadding="0" bgcolor="#ffffff" align="center">
         <tbody>
         <tr>
-        <td class="esd-block-text" style="padding:20px; background-color: rgba(74, 88, 128, 0.774);color: #fff;font-size:30px;" align="center" ;>
+        <td class="esd-block-text header-mail" align="center" ;>
         <p>Yes Transfert Utilitaire de Transfert</p>
         </td>
         </tr>
@@ -199,19 +227,11 @@ function mailCreate($upload, $mail_exp, $subject, $message) {
         <td align="center" class="esd-block-text es-p40t es-p10b">
         <h1 style="color: #ffffff;">Bonjour vous avez un fichier à télécharger de l\'Expéditeur:<br>' . $mail_exp . '</h1> 
         </td>
-
-
-
         </tr>
         <tr>
         <td esdev-links-color="#757575" class="esd-block-text es-p10t es-p20b es-p30r es-p30l" align="center">
-        <p style="color: #fff;">Voici le message de votre Expéditeur:<br>' . $subject . '<br>' . $message . '</p>
+        <p style="color: #fff;">' . $subject . '<br>' . $message . '</p>
         <p style="color: #fff;">Yes Transfert vous invite à procéder a votre téléchargement gratuit du fichier que l\'on vous à envoyer par Email</p>
-        </td>
-        </tr>
-        <tr>
-        <td class="esd-block-button es-p10t es-p20b" align="center">
-        <button onclick="location.href=' . $upload . '" style="border:1px solid  rgba(0, 0, 255, .2); box-shadow: 6px 6px 2px 1px rgba(0, 0, 255, .2);background-color: rgba(74, 88, 128, 0.774);color: #fff;padding:5px;margin:25px;border-radius:10px;-webkit-border-radius:10px;-moz-border-radius:10px;-ms-border-radius:10px;-o-border-radius:10px;width:100px;">Cliquez ici</button>
         </td>
         </tr>
         </tbody>
@@ -230,7 +250,7 @@ function mailCreate($upload, $mail_exp, $subject, $message) {
         <td class="esd-stripe" esd-custom-block-id="7394" align="center">
         <table class="es-footer-body" width="800" cellspacing="0" cellpadding="0" bgcolor="#ffffff" align="center">
         <tbody>
-        <tr>
+        <tr>true
         <td class="esd-structure es-p40t es-p40b es-p40r es-p40l" align="left">
         <table width="100%" cellspacing="0" cellpadding="0">
         <tbody>
@@ -239,8 +259,10 @@ function mailCreate($upload, $mail_exp, $subject, $message) {
         <table width="100%" cellspacing="0" cellpadding="0">
         <tbody>
         <tr>
-        <td class="esd-block-text" style="padding:20px; background-color: rgba(74, 88, 128, 0.774);color: #fff;" align="center">
-        <p>Yes Transfert © 2020<b></p><p>By</p></p><p>Isabelle, Johanna, Thomas, Anthony @ ACS Mulhouse 2020</p>
+        <td class="esd-block-text footer-mail" align="center">
+        <p>Yes Transfert © 2020<b></p>
+        <a href="' . $upload . '" class="btnLink">Cliquez ici</a>
+        </p><p>Isabelle, Johanna, Thomas, Anthony @ ACS Mulhouse 2020</p>
         </td>
         </tr>
         </tbody>

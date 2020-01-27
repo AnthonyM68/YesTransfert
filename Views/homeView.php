@@ -1,19 +1,5 @@
 <?php require_once "header.php"; ?>
 
-<div class="area">
-    <ul class="circles">
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-    </ul>
-</div>
 <div class="container">
     <div class="wrapper">
         <form method="POST" id="contactform" class="form-signin" enctype="multipart/form-data">

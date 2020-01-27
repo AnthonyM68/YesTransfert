@@ -3,11 +3,16 @@ body {
    height: 100%;
 }
 
-.form-signin-heading{
-   font-size: 25px;
+/********Thankyou******/
+.hiddenForm {
+   border:none;
+   background:transparent;
 }
-
+.thanksyou{
+   font-size:30px;
+}
 /******* form ******/
+
 form {
    margin: auto;
    background-color: #ecf0f1;
@@ -27,6 +32,7 @@ form {
 }
 .form-signin-heading {
    margin-bottom: 30px;
+   font-size: 25px;
 }
 .form-control {
    position: relative;
@@ -380,7 +386,6 @@ footer {
    }
 }
 @media (min-width: 640px) {
-
    .form-signin {
       max-width: 280px;
    }

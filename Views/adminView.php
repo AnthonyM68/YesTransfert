@@ -1,8 +1,6 @@
-<?php
-require_once('headerAdmin.php');
-require_once('Models/admin.php');
+<?php require_once "headerAdmin.php";
 
-echo "<h3> Bonjour " . $_SESSION['login'] . " ! </h3>";
+echo '<div class="d-flex justify-content-center"> <h3> Bonjour ' . $_SESSION['login'] . ' ! </h3></div>';
 
 $data = listData($pdo);
 $delete = delete($pdo);
