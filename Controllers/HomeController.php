@@ -105,7 +105,7 @@ if (isset($_POST['uploadform']) && !empty($_POST)) {
                     $displayDivError .= $divResponseError . 'Echec de génération fichier zip' . $closeDiv;
                 }
                 //on récupère le chemin du fichier que l'on insert dans le tableau tabValue pour la BDD
-                $zip =  "uploads/" . $nameTmp . ".zip";
+                $zip =  "Uploads/" . $nameTmp . ".zip";
                 $tabValue['zip'] = $zip;
             } else {
                 $displayDivError .= $divResponseError . 'Extension de format non valide' . $closeDiv;
