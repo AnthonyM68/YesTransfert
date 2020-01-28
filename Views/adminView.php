@@ -1,7 +1,7 @@
 <?php require_once "headerAdmin.php";
 require_once "Models/admin.php";
 
-echo '<div class="d-flex justify-content-center"> <h3> Bonjour ' . $_SESSION['login'] . ' ! </h3></div>';
+echo '<div class="d-flex justify-content-center"> <h3> Bonjour Administrateur ' . $_SESSION['login'] . ' ! </h3></div>';
 
 
 $data = listData($pdo);
@@ -13,12 +13,12 @@ function checkList($data)
     foreach ($data as $key) : ?>
         <tr scope="row">
             <?php foreach ($key as $value) : ?>
-                <td scope="row"><?= $value; ?></td>
+                <td scope="row" class="exist-result"><?= $value; ?></td>
             <?php endforeach; ?>
-            <td>
+            <td class="exist-result">
                 <?php $id = $key['id']; ?>
-                <form action="" method="GET">
-                    <a href="index.php?page=admin&id=<?= $id; ?>" onclick="return confirm('Voulez-vous supprimer cet élément !?')">Supprimer</a>
+                <form class="delete" action="" method="GET">
+                    <a  href="index.php?page=admin&id=<?= $id; ?>" onclick="return confirm('Voulez-vous supprimer cet élément !?')" >Supprimer</a>
                 </form>
             </td>
         <tr>
@@ -26,8 +26,8 @@ function checkList($data)
 }
     ?>
 
-    <table>
-        <thead>
+    <table class="container">
+        <thead class="header-tab">
             <tr>
                 <th scope="col">Id</th>
                 <th scope="col">Mail expéditeur</th>
@@ -44,7 +44,7 @@ function checkList($data)
             <?php if (empty($data)) : ?>
 
                 <tr>
-                    <td colspan="6">Aucun résultat trouvé</td>
+                    <td colspan="12" class="container no-result">Aucun résultat trouvé</td>
                 </tr>
 
             <?php else :
@@ -58,7 +58,7 @@ function checkList($data)
                         $deleteZip = deleteFile($result['0']['zip']);
                         //on reverifie qu'il n'existe plus dans la BDD
                         $result = siExist($pdo, $_GET['id']);
-                    
+                        //si la suppression a échoué on affiche un message
                         if(!empty($result)){
                             echo 'Une erreur est survenue pendant la suppression des données de la BDD';  
                         } else {
@@ -66,14 +66,20 @@ function checkList($data)
                             //On affiche le resultat de la suppression du fichier
                             echo $deleteZip;  
                         }
+                        //Si la suppression a échoué on affiche un message
                     } else {
                         echo 'Veuillez vérifier votre ID car il n\'existe pas dans la base de données';
                     }
-                    checkList(listData($pdo));
+                    //Affiche la BDD actuel
+                    $listData = checkList(listData($pdo));
+                    var_dump($listData);
                 } else {
+                    //Affiche la BDD après suppression
                     checkList($data);
+                    
                 }
             ?>
             <?php endif; ?>
         </tbody>
     </table>
+    <?php require_once "footer.php"; ?>

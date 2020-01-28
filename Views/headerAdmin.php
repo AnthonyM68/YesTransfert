@@ -17,7 +17,7 @@
       <nav class="navbarAdmin container">
          <ul class="row">
             <li class="homeYTransf col h1">
-               <a href="index.php?page=home">Yes Transfert</a>
+               <a href="index.php?page=home">Yes Transfert Administrateur</a>
             </li>
          </ul>
       </nav>
