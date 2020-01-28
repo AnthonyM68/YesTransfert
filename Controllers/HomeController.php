@@ -9,8 +9,8 @@ $displayDivError  = '';
 $divResponseError = '<div class="response-error form-control">';
 $divResponseValid = '<div class="response-valid form-control">';
 $closeDiv         = '</div>';
-$sujetGen         = "Vous avez reçus un fichier a télécharger";
-$messageGen       = "Ce fichier a été générer par Yes Transfert";
+$sujetGen         = "L'expéditeur n'a pas laissé de message.";
+$messageGen       = "Ce fichier a été généré par Yes Transfert.";
 ///////////////////////////////////////////////////////////
 //Desactive les warning de php nottament pour la fonction $zip->close() en cas d'erreur d'écriture sur le serveur
 error_reporting(E_ERROR | /*E_WARNING | */ E_PARSE);

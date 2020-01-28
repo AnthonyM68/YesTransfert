@@ -225,13 +225,13 @@ function mailCreate($upload, $mail_exp, $subject, $message) {
         <tbody>
         <tr>
         <td align="center" class="esd-block-text es-p40t es-p10b">
-        <h1 style="color: #ffffff;">Bonjour vous avez un fichier aG télécharger de l\'Expéditeur:<br>' . $mail_exp . '</h1> 
+        <h1 style="color: #ffffff;">Bonjour vous avez un fichier à télécharger de l\'Expéditeur:<br>' . $mail_exp . '</h1> 
         </td>
         </tr>
         <tr>
         <td esdev-links-color="#757575" class="esd-block-text es-p10t es-p20b es-p30r es-p30l" align="center">
         <p style="color: #fff;">' . $subject . '<br>' . $message . '</p>
-        <p style="color: #fff;">Yes Transfert vous invite a procéder à votre téléchargement gratuit du fichier que l\'on vous a envoyer par Email</p>
+        <p style="color: #fff;">Yes Transfert vous invite à procéder à votre téléchargement gratuit du fichier que l\'on vous a envoyé par Email</p>
         </td>
         </tr>
         </tbody>
