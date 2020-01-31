@@ -4,27 +4,7 @@ require_once "Models/admin.php";
 echo '<div class="d-flex justify-content-center"> <h3> Bonjour Administrateur ' . $_SESSION['login'] . ' ! </h3></div>';
 
 
-$data = listData($pdo);
-
-
-function checkList($data)
-{
-
-    foreach ($data as $key) : ?>
-        <tr scope="row">
-            <?php foreach ($key as $value) : ?>
-                <td scope="row" class="exist-result"><?= $value; ?></td>
-            <?php endforeach; ?>
-            <td class="exist-result">
-                <?php $id = $key['id']; ?>
-                <form class="delete" action="" method="GET">
-                    <a  href="index.php?page=admin&id=<?= $id; ?>" onclick="return confirm('Voulez-vous supprimer cet élément !?')" >Supprimer</a>
-                </form>
-            </td>
-        <tr>
-    <?php endforeach;
-}
-    ?>
+$data = listData($pdo);?>
 
     <table class="container">
         <thead class="header-tab">
@@ -71,15 +51,27 @@ function checkList($data)
                         echo 'Veuillez vérifier votre ID car il n\'existe pas dans la base de données';
                     }
                     //Affiche la BDD actuel
-                    $listData = checkList(listData($pdo));
-                    var_dump($listData);
+                    $listEntree = numberTab(listData($pdo));
+                    $page = new Page($listEntree );
+                    echo $page->page();
+                    //////////////////////////////////////////////
+                    //$listData = listData($pdo);
+                    
                 } else {
                     //Affiche la BDD après suppression
-                    checkList($data);
+                    //$listData = listData($pdo);
+                    $listEntree = numberTab(listData($pdo));
+                    $page = new Page($listEntree );
+                    echo $page->page();
+                    
+
+                    
+                    ///////////////////////////////////////////
+                    //checkList($data);
                     
                 }
             ?>
             <?php endif; ?>
         </tbody>
     </table>
-    <?php require_once "footer.php"; ?>
+    <?php require_once "footerAdminView.php"; ?>

@@ -99,7 +99,7 @@ if (isset($_POST['uploadform']) && !empty($_POST)) {
                         $displayDivError .= $divResponseError . 'Erreur d\'écriture du fichier sur le serveur' . $disClose;
                         $mailNosend = true;
                     } else {
-                        $displayDivError .= $divResponseValid . 'Fichier zip bien créer' . $closeDiv;
+                        $displayDivError .= $divResponseValid . 'Fichier zip bien créé' . $closeDiv;
                     }
                 } else {
                     $displayDivError .= $divResponseError . 'Echec de génération fichier zip' . $closeDiv;
@@ -197,7 +197,7 @@ if (isset($_POST['uploadform']) && !empty($_POST)) {
         //On envois le mail en local
         $resultMail = $mailer->send($message);
         if ($resultMail === 1) {
-            $displayDivError .= $divResponseValid . 'Votre Email a bien été envoyer' . $closeDiv;
+            $displayDivError .= $divResponseValid . 'Votre Email a bien été envoyé' . $closeDiv;
         } else {
             $displayDivError .= $divResponseError . 'Erreur pendant l\'envoie de l\'Email' . $closeDiv;
         }

@@ -1,5 +1,5 @@
 <?php
-require_once('Models/Download.php');
+require_once('Models/download.php');
 $link = null;
 
 if (isset($_GET['link']) && !empty($_GET['link'])) {
