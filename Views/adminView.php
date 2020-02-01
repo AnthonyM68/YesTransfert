@@ -5,9 +5,8 @@ echo '<div class="d-flex justify-content-center"> <h3> Bonjour Administrateur ' 
 
 
 $data = listData($pdo);
-$debut = 10;
-
 $maxByPage = 10;
+
 ?>
 
     <table class="container">
@@ -54,38 +53,25 @@ $maxByPage = 10;
                     } else {
                         echo 'Veuillez vérifier votre ID car il n\'existe pas dans la base de données';
                     }
+
                     //Affiche la BDD actuel
+
                     $listEntree = numberTab(listData($pdo), $debut, $maxByPage);
-
                     $page = new Page($listEntree, 0 , 10);
-
                     echo $page->page();
 
-
-                    //////////////////////////////////////////////
-                    //$listData = listData($pdo);
                     $maxPage = calculPageTotal($entree, $debut, $maxByPage);
                     
-
-
                 } else {
                     //Affiche la BDD après suppression
-                    //$listData = listData($pdo);
-
 
                     $listEntree = numberTab(listData($pdo), $debut, $maxByPage);
-
                     $page = new Page($listEntree, 0 , 10);
-
                     echo $page->page();
 
 
                     $maxPage = calculPageTotal($entree, $maxByPage);
-                    
-                    
-                    ///////////////////////////////////////////
-                    //checkList($data);
-                    
+                                   
                 }
             ?>
             <?php endif; ?>

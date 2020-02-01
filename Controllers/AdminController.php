@@ -5,8 +5,10 @@ session_start();
 $pages = 0;
 $entree = count(listData($pdo));
 $linkPage = "http://localhost/yestransfert/index.php?page=admin&linkPage=";
+$debut = 0;
 
 
+$compteur = 0;
 
 function pageActual($entree){
     if($entree > 0 ){
@@ -19,7 +21,6 @@ function pageActual($entree){
 ////Calcul le nombre de page en fonction des entrée
 function calculPageTotal($entree, $maxByPage)
 {
-
     $comptEntree = 0;
     $maxPage = 0;
     while ($comptEntree < $entree) {
@@ -38,12 +39,14 @@ function calculPageTotal($entree, $maxByPage)
 //Détect un changement de page
 if (isset($_GET['linkPage']) && !empty($_GET['linkPage'])) {
     if ($_GET['linkPage'] == "down") {
-
-        $page = new Page($listEntree, 0 , 10);
-    } else if ($_GET['linkPage'] == "next") {
-
-
-        $page = new Page($listEntree, 0 , 10);
+        $compteur - 1;
+        $debut - 10;
+        //var_dump($debut. " ".$compteur);
+    } 
+    if ($_GET['linkPage'] == "next") {
+        $compteur += 1;
+        $debut += 10;
+        //var_dump($debut. " ".$compteur);
     }
 }
 
