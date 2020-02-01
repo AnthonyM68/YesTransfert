@@ -2,22 +2,30 @@
 require_once('Models/admin.php');
 
 session_start();
-$pages = 10;
-
+$pages = 0;
 $entree = count(listData($pdo));
-$maxByPage = 10;
 $linkPage = "http://localhost/yestransfert/index.php?page=admin&linkPage=";
 
-////Calcul le nombre de page en fonction des entrée
 
+
+function pageActual($entree){
+    if($entree > 0 ){
+        $pages = 1;
+    } else {
+        $pages = 0;
+    }
+    return $pages;
+}
+////Calcul le nombre de page en fonction des entrée
 function calculPageTotal($entree, $maxByPage)
 {
+
     $comptEntree = 0;
     $maxPage = 0;
     while ($comptEntree < $entree) {
         if ($comptEntree == $maxByPage && $comptEntree <= $entree) {
             $maxPage += 1;
-            $maxByPage += 10;
+            $maxByPage += 10; 
         } else {
             $comptEntree++;
         }
@@ -28,31 +36,41 @@ function calculPageTotal($entree, $maxByPage)
     return $maxPage;
 }
 //Détect un changement de page
-if(isset($_GET['linkPage']) && !empty($_GET['linkPage'])){
-    if ($_GET['linkPage'] == "down"){
-        var_dump($_GET['linkPage']);
-    } else if ($_GET['linkPage'] == "next"){
-        var_dump($_GET['linkPage']);
+if (isset($_GET['linkPage']) && !empty($_GET['linkPage'])) {
+    if ($_GET['linkPage'] == "down") {
+
+        $page = new Page($listEntree, 0 , 10);
+    } else if ($_GET['linkPage'] == "next") {
+
+
+        $page = new Page($listEntree, 0 , 10);
     }
-    
 }
+
 //remplis un tableau de maxByPage reponse
-function numberTab($data, $maxByPage)
+function numberTab($data, $debut, $maxByPage)
 {
     $tabX = [];
-    for ($i = 0; $i < $maxByPage; $i++) {
-        $tabX[$i] = $data[$i];
+    $j = 0;
+    for ($i = $debut; $i < count($data)  && $i < $debut + $maxByPage ; $i++) {
+        if ($i < $debut + $maxByPage) {
+            $tabX[$j] = $data[$i];
+            $j++;
+        }     
     }
     return $tabX;
 }
 
-
 //affiche un tableau 
 class Page
 {
+    private $debut;
+    private $fin;
     private $nbResponse;
-    public function __construct($nbResponse)
+    public function __construct($nbResponse, $debut, $fin)
     {
+        $this->debut = $debut;
+        $this->fin = $fin;
         $this->nbResponse = $nbResponse;
     }
 
@@ -103,6 +121,6 @@ function deleteFile($adressZip)
 
 
 
-
+$pages = pageActual($entree);
 
 require_once('Views/adminView.php');

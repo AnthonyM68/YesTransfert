@@ -5,8 +5,9 @@ echo '<div class="d-flex justify-content-center"> <h3> Bonjour Administrateur ' 
 
 
 $data = listData($pdo);
+$debut = 10;
 
-
+$maxByPage = 10;
 ?>
 
     <table class="container">
@@ -54,15 +55,17 @@ $data = listData($pdo);
                         echo 'Veuillez vérifier votre ID car il n\'existe pas dans la base de données';
                     }
                     //Affiche la BDD actuel
-                    $listEntree = numberTab(listData($pdo), 10);
+                    $listEntree = numberTab(listData($pdo), $debut, $maxByPage);
 
-                    $page = new Page($listEntree );
+                    $page = new Page($listEntree, 0 , 10);
+
                     echo $page->page();
 
 
                     //////////////////////////////////////////////
                     //$listData = listData($pdo);
-                    $maxPage = calculPageTotal($entree, $maxByPage);
+                    $maxPage = calculPageTotal($entree, $debut, $maxByPage);
+                    
 
 
                 } else {
@@ -70,14 +73,15 @@ $data = listData($pdo);
                     //$listData = listData($pdo);
 
 
-                    $listEntree = numberTab(listData($pdo), 10);
+                    $listEntree = numberTab(listData($pdo), $debut, $maxByPage);
 
-                    $page = new Page($listEntree );
+                    $page = new Page($listEntree, 0 , 10);
+
                     echo $page->page();
 
 
                     $maxPage = calculPageTotal($entree, $maxByPage);
-
+                    
                     
                     ///////////////////////////////////////////
                     //checkList($data);
