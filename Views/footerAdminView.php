@@ -3,14 +3,17 @@
 
     <span id="page-result">Pages: 
     <!--affiche la page précédente-->
-    <a  style="color:#fff" href=<?=$linkPage?>down > < </a>
+
+    <a style="color:#fff"  href=<?=$linkPage . "var="?><?php  echo $var; ?>&action=decr >  < </a>
+
     <!--page acutel-->
     <?=$pages?>
     /
     <!--page totale-->
     <?=$maxPage?>
-    <!--affiche la page suivante-->
-    <a  style="color:#fff" href=<?=$linkPage?>next > > </a>
+    <a style="color:#fff"  href=<?=$linkPage . "var="?><?php  echo $var; ?>&action=incr >  ></a>
+
+
 </span>
     <!--Nombre d'entré totale-->
     <span id="result">Entrées: <?=$entree?></span>

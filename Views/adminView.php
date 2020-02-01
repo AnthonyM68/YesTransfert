@@ -5,7 +5,9 @@ echo '<div class="d-flex justify-content-center"> <h3> Bonjour Administrateur ' 
 
 
 $data = listData($pdo);
-$maxByPage = 10;
+
+$pages = $pages;
+var_dump($pages)
 
 ?>
 

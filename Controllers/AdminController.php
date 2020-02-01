@@ -2,22 +2,36 @@
 require_once('Models/admin.php');
 
 session_start();
-$pages = 0;
+$maxByPage = 10;
 $entree = count(listData($pdo));
-$linkPage = "http://localhost/yestransfert/index.php?page=admin&linkPage=";
+$linkPage = "http://localhost/yestransfert/index.php?page=admin&";
 $debut = 0;
+$pages = 0;
 
+if (!isset($_GET['var'])) {
+    $var = 0;
+    $pages = 0;
+} else {
 
-$compteur = 0;
-
-function pageActual($entree){
-    if($entree > 0 ){
-        $pages = 1;
-    } else {
-        $pages = 0;
-    }
-    return $pages;
+    $var = $_GET['var'];
+    $pages = $_GET['var'];
 }
+
+if (isset($_GET['action'])) {
+    if ($_GET['action'] == 'incr') { 
+        if(calculPageTotal($entree, $maxByPage) != $pages) {
+           $var++;
+        $pages++; 
+        }
+        
+    } else if ($_GET['action'] == 'decr') {
+        if ($pages != 0) {
+            $var--;
+            $pages--;
+        } 
+    }
+}
+
 ////Calcul le nombre de page en fonction des entrée
 function calculPageTotal($entree, $maxByPage)
 {
@@ -26,7 +40,7 @@ function calculPageTotal($entree, $maxByPage)
     while ($comptEntree < $entree) {
         if ($comptEntree == $maxByPage && $comptEntree <= $entree) {
             $maxPage += 1;
-            $maxByPage += 10; 
+            $maxByPage += 10;
         } else {
             $comptEntree++;
         }
@@ -36,30 +50,17 @@ function calculPageTotal($entree, $maxByPage)
     }
     return $maxPage;
 }
-//Détect un changement de page
-if (isset($_GET['linkPage']) && !empty($_GET['linkPage'])) {
-    if ($_GET['linkPage'] == "down") {
-        $compteur - 1;
-        $debut - 10;
-        //var_dump($debut. " ".$compteur);
-    } 
-    if ($_GET['linkPage'] == "next") {
-        $compteur += 1;
-        $debut += 10;
-        //var_dump($debut. " ".$compteur);
-    }
-}
 
 //remplis un tableau de maxByPage reponse
 function numberTab($data, $debut, $maxByPage)
 {
     $tabX = [];
     $j = 0;
-    for ($i = $debut; $i < count($data)  && $i < $debut + $maxByPage ; $i++) {
+    for ($i = $debut; $i < count($data)  && $i < $debut + $maxByPage; $i++) {
         if ($i < $debut + $maxByPage) {
             $tabX[$j] = $data[$i];
             $j++;
-        }     
+        }
     }
     return $tabX;
 }
@@ -99,10 +100,6 @@ class Page
     }
 }
 
-
-
-
-
 //fonction qui supprime le fichier du serveur
 function deleteFile($adressZip)
 {
@@ -120,10 +117,4 @@ function deleteFile($adressZip)
     //on retourne le message de réponse
     return $result;
 }
-
-
-
-
-$pages = pageActual($entree);
-
 require_once('Views/adminView.php');
