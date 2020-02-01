@@ -4,7 +4,10 @@ require_once "Models/admin.php";
 echo '<div class="d-flex justify-content-center"> <h3> Bonjour Administrateur ' . $_SESSION['login'] . ' ! </h3></div>';
 
 
-$data = listData($pdo);?>
+$data = listData($pdo);
+
+
+?>
 
     <table class="container">
         <thead class="header-tab">
@@ -51,19 +54,29 @@ $data = listData($pdo);?>
                         echo 'Veuillez vérifier votre ID car il n\'existe pas dans la base de données';
                     }
                     //Affiche la BDD actuel
-                    $listEntree = numberTab(listData($pdo));
+                    $listEntree = numberTab(listData($pdo), 10);
+
                     $page = new Page($listEntree );
                     echo $page->page();
+
+
                     //////////////////////////////////////////////
                     //$listData = listData($pdo);
-                    
+                    $maxPage = calculPageTotal($entree, $maxByPage);
+
+
                 } else {
                     //Affiche la BDD après suppression
                     //$listData = listData($pdo);
-                    $listEntree = numberTab(listData($pdo));
+
+
+                    $listEntree = numberTab(listData($pdo), 10);
+
                     $page = new Page($listEntree );
                     echo $page->page();
-                    
+
+
+                    $maxPage = calculPageTotal($entree, $maxByPage);
 
                     
                     ///////////////////////////////////////////
