@@ -6,33 +6,34 @@ $maxByPage = 10;
 $entree = count(listData($pdo));
 $linkPage = "http://localhost/yestransfert/index.php?page=admin&";
 $debut = 0;
+$operation ='';
 $_SESSION['start'] = 0;
+$data = listData($pdo);
 
-if (!isset($_GET['var'])) {
-    $var = 0;
-    $_SESSION['pages'] = $var;
-    $_SESSION['displayPages'] = $var;
-} else {
-    $var = $_GET['var'];
-}
-if (isset($_GET['action'])) {
-    if ($_GET['action'] == 'incr') {
-        if ($_SESSION['displayPages'] < calculPageTotal($entree, $maxByPage) - 1) {
-            $_SESSION['displayPages']++;
-            $_SESSION['start'] = $_SESSION['displayPages'] * 10;
-            $_SESSION['pages'] = $_SESSION['displayPages'];
-        } else {
-            $_SESSION['start'] = $_SESSION['displayPages'] * 10;
-        }
+//affiche une page de réponses
+class Page
+{
+    private $nbResponse;
+    public function __construct($nbResponse)
+    {
+
+        $this->nbResponse = $nbResponse;
     }
-    if ($_GET['action'] == 'decr') {
-        if ($_SESSION['displayPages'] > 0) {
-            $_SESSION['displayPages']--;
-            $_SESSION['start'] = $_SESSION['displayPages'] * 10;
-            $_SESSION['pages'] = $_SESSION['displayPages'];
-        } else {
-            $_SESSION['start'] = $_SESSION['displayPages'] * 10;
-        }
+    public function page()
+    {
+        foreach ($this->nbResponse as $key) : ?>
+            <tr scope="row">
+                <?php foreach ($key as $value) : ?>
+                    <td scope="row" class="alert alert-info exist-result"><?= $value; ?></td>
+                <?php endforeach; ?>
+                <td class="alert alert-info exist-result">
+                    <?php $id = $key['id']; ?>
+                    <form class="delete" action="" method="GET">
+                        <a class="alert-danger" href="index.php?page=admin&id=<?= $id; ?>" onclick="return confirm('Voulez-vous supprimer cet élément !?')">Supprimer</a>
+                    </form>
+                </td>
+            <tr>
+    <?php endforeach;
     }
 }
 ////Calcul le nombre de page en fonction des entrée
@@ -55,7 +56,7 @@ function calculPageTotal($entree, $maxByPage)
     return $maxPage;
 }
 
-//remplis un tableau de maxByPage reponse
+//remplis un tableau de maxByPage reponse (10 par défaut)
 function numberTab($data, $debut, $maxByPage)
 {
     $tabX = [];
@@ -68,87 +69,57 @@ function numberTab($data, $debut, $maxByPage)
     }
     return $tabX;
 }
-
-//affiche un tableau 
-class Page
-{
-    private $nbResponse;
-    public function __construct($nbResponse)
-    {
-
-        $this->nbResponse = $nbResponse;
-    }
-    public function page()
-    {
-        foreach ($this->nbResponse as $key) : ?>
-            <tr scope="row">
-                <?php foreach ($key as $value) : ?>
-                    <td scope="row" class="exist-result"><?= $value; ?></td>
-                <?php endforeach; ?>
-                <td class="exist-result">
-                    <?php $id = $key['id']; ?>
-                    <form class="delete" action="" method="GET">
-                        <a href="index.php?page=admin&id=<?= $id; ?>" onclick="return confirm('Voulez-vous supprimer cet élément !?')">Supprimer</a>
-                    </form>
-                </td>
-            <tr>
-    <?php endforeach;
-    }
-}
-
 //fonction qui supprime le fichier du serveur
-function deleteFile($adressZip)
+function deleteFile($adressZip, $operation )
 {
+
     //on récupère l'adresse et nom du fichier
     $adressServer = './' . $adressZip;
     //On le supprime
     unlink($adressServer);
     // Si une erreur est survenu et que le fichier existe toujours
     if (file_exists($adressServer)) {
-        $result .= "Le fichier n'a pas pu être supprimé du serveur";
+        $operation = '<div class="alert alert-danger result container">Le fichier n\'a pas pu être supprimé du serveur</div>';
     } else {
         //sinon on affiche qu'il a bien été supprimé
-        $result .= "Le fichier a été supprimé du serveur";
+        $operation = '<div class="alert alert-success result container">Le fichier a été supprimé du serveur</div>';
     }
     //on retourne le message de réponse
-    return $result;
+    return $operation ;
 }
-
-
-
-
-/*
+//si aucune page n'est choisis on déclare et initialise les variables
 if (!isset($_GET['var'])) {
-    var_dump("test1");
-    if ($entree != 0) {
-        $pages = 1;
-        $var = $pages + 1;
-    }
-} else {
-    var_dump("test2");
-    $var = $_GET['var'];
-    $pages = $_GET['var'];  
+    $var = 0;
+    $_SESSION['pages'] = $var;
+    $_SESSION['displayPages'] = $var;
 }
-
+//si l'on clique sur une page on récupère la valeur de la variable action
 if (isset($_GET['action'])) {
-    
-    
+    //si l'on incrémente
     if ($_GET['action'] == 'incr') {
-        var_dump("test3");
-        if (calculPageTotal($entree, $maxByPage) != $pages) {
-            $var++;
-            $pages++;
-            
+        //que la page en cours est inférieur au total de page on incrémente la page
+        if ($_SESSION['displayPages'] < calculPageTotal($entree, $maxByPage) - 1) {
+            $_SESSION['displayPages']++;
+            //on affiche le résultat 
+            $_SESSION['start'] = $_SESSION['displayPages'] * 10;
+            $_SESSION['pages'] = $_SESSION['displayPages'];
+        } else {
+            //si nous sommes sur la dernière page on affiche 
+            $_SESSION['start'] = $_SESSION['displayPages'] * 10;
         }
-
-
-    } else if ($_GET['action'] == 'decr') {
-        var_dump("test4");
-        if ($pages != 1) {
-            $var--;
-            $pages--;
-            $_SESSION['debut'] - 10;
+    }
+    //si l'on décrémente
+    if ($_GET['action'] == 'decr') {
+        //que nous sommes pas sur la première page on décrémente la page
+        if ($_SESSION['displayPages'] > 0) {
+            $_SESSION['displayPages']--;
+            //on affiche le résultat 
+            $_SESSION['start'] = $_SESSION['displayPages'] * 10;
+            $_SESSION['pages'] = $_SESSION['displayPages'];
+        } else {
+            //si nous sommes sur la première page on affiche
+            $_SESSION['start'] = $_SESSION['displayPages'] * 10;
         }
-    } 
-}*/
+    }
+}
 require_once('Views/adminView.php');
