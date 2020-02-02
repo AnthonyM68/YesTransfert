@@ -4,14 +4,15 @@
     <span id="page-result">Pages: 
     <!--affiche la page précédente-->
 
-    <a style="color:#fff"  href=<?=$linkPage . "var="?><?php  echo $var; ?>&action=decr >  < </a>
 
+
+    <a style="color:#fff"  href=<?=$linkPage . "var="?><?=$_SESSION['pages']?>&action=decr >< </a>
     <!--page acutel-->
-    <?=$pages?>
+    <?=$_SESSION['pages']?>
     /
     <!--page totale-->
     <?=$maxPage?>
-    <a style="color:#fff"  href=<?=$linkPage . "var="?><?php  echo $var; ?>&action=incr >  ></a>
+    <a style="color:#fff"  href=<?=$linkPage . "var="?><?=$_SESSION['pages']?>&action=incr > ></a>
 
 
 </span>

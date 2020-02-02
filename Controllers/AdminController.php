@@ -6,28 +6,34 @@ $maxByPage = 10;
 $entree = count(listData($pdo));
 $linkPage = "http://localhost/yestransfert/index.php?page=admin&";
 $debut = 0;
-$pages = 0;
+$_SESSION['pages'] = 0;
+$_SESSION['start'] = 0;
 
-if (!isset($_GET['var'])) {
-    $var = 0;
-    $pages = 0;
+
+if (!isset($_GET['var'])) { 
+
+    if($entree != 0){
+        $_SESSION['pages'] = 1;
+    } 
 } else {
-
-    $var = $_GET['var'];
-    $pages = $_GET['var'];
+    if($_GET['var'] === 0){
+        $_SESSION['start'] = 10;
+    } else {
+        $_SESSION['pages'] = $_GET['var'];
+        $_SESSION['start'] = $_SESSION['pages'] * 10;
+    }
+    
 }
-
 if (isset($_GET['action'])) {
-    if ($_GET['action'] == 'incr') { 
-        if(calculPageTotal($entree, $maxByPage) != $pages) {
-           $var++;
-        $pages++; 
+    
+    if ($_GET['action'] == 'incr') {
+        if (calculPageTotal($entree, $maxByPage) != $_SESSION['pages']) {
+            $_SESSION['pages']++; 
         }
-        
+
     } else if ($_GET['action'] == 'decr') {
-        if ($pages != 0) {
-            $var--;
-            $pages--;
+        if($_SESSION['pages'] != 1) {
+            $_SESSION['pages']--;
         } 
     }
 }
@@ -38,6 +44,7 @@ function calculPageTotal($entree, $maxByPage)
     $comptEntree = 0;
     $maxPage = 0;
     while ($comptEntree < $entree) {
+        
         if ($comptEntree == $maxByPage && $comptEntree <= $entree) {
             $maxPage += 1;
             $maxByPage += 10;
@@ -68,27 +75,19 @@ function numberTab($data, $debut, $maxByPage)
 //affiche un tableau 
 class Page
 {
-    private $debut;
-    private $fin;
     private $nbResponse;
-    public function __construct($nbResponse, $debut, $fin)
+    public function __construct($nbResponse)
     {
-        $this->debut = $debut;
-        $this->fin = $fin;
+
         $this->nbResponse = $nbResponse;
     }
-
     public function page()
     {
-
         foreach ($this->nbResponse as $key) : ?>
-
             <tr scope="row">
                 <?php foreach ($key as $value) : ?>
-
                     <td scope="row" class="exist-result"><?= $value; ?></td>
                 <?php endforeach; ?>
-
                 <td class="exist-result">
                     <?php $id = $key['id']; ?>
                     <form class="delete" action="" method="GET">
@@ -117,4 +116,42 @@ function deleteFile($adressZip)
     //on retourne le message de réponse
     return $result;
 }
+
+
+
+
+/*
+if (!isset($_GET['var'])) {
+    var_dump("test1");
+    if ($entree != 0) {
+        $pages = 1;
+        $var = $pages + 1;
+    }
+} else {
+    var_dump("test2");
+    $var = $_GET['var'];
+    $pages = $_GET['var'];  
+}
+
+if (isset($_GET['action'])) {
+    
+    
+    if ($_GET['action'] == 'incr') {
+        var_dump("test3");
+        if (calculPageTotal($entree, $maxByPage) != $pages) {
+            $var++;
+            $pages++;
+            
+        }
+
+
+    } else if ($_GET['action'] == 'decr') {
+        var_dump("test4");
+        if ($pages != 1) {
+            $var--;
+            $pages--;
+            $_SESSION['debut'] - 10;
+        }
+    } 
+}*/
 require_once('Views/adminView.php');

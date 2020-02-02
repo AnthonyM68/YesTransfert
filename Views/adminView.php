@@ -6,8 +6,6 @@ echo '<div class="d-flex justify-content-center"> <h3> Bonjour Administrateur ' 
 
 $data = listData($pdo);
 
-$pages = $pages;
-var_dump($pages)
 
 ?>
 
@@ -33,6 +31,7 @@ var_dump($pages)
                 </tr>
 
             <?php else :
+        
                 if (isset($_GET['id']) && !empty($_GET['id'])) {
                     //on vérifie que l'id existe dans la BDD
                     $result = siExist($pdo, $_GET['id']);
@@ -55,21 +54,22 @@ var_dump($pages)
                     } else {
                         echo 'Veuillez vérifier votre ID car il n\'existe pas dans la base de données';
                     }
-
-                    //Affiche la BDD actuel
-
-                    $listEntree = numberTab(listData($pdo), $debut, $maxByPage);
-                    $page = new Page($listEntree, 0 , 10);
-                    echo $page->page();
-
-                    $maxPage = calculPageTotal($entree, $debut, $maxByPage);
-                    
-                } else {
+  
                     //Affiche la BDD après suppression
 
-                    $listEntree = numberTab(listData($pdo), $debut, $maxByPage);
-                    $page = new Page($listEntree, 0 , 10);
-                    echo $page->page();
+                    $listEntree = numberTab(listData($pdo), $_SESSION['pages'], $maxByPage);
+                    $newPage = new Page($listEntree);
+                    echo $newPage->page();
+
+                    $maxPage = calculPageTotal($entree, $maxByPage);
+                    
+                } else {
+                    
+                    //Affiche la BDD actuel
+
+                    $listEntree = numberTab(listData($pdo), $_SESSION['start'] , $maxByPage);
+                    $newPage = new Page($listEntree);
+                    echo $newPage->page();
 
 
                     $maxPage = calculPageTotal($entree, $maxByPage);
