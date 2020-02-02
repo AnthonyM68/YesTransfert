@@ -335,9 +335,14 @@ input[type="password"] {
    font-size:10px;
 }
 .result{
-
    font-size:20px;
    text-align: center;
+}
+.alert{
+   margin-bottom: 2px;
+   height: 30px;
+   line-height:20px;
+   padding:4px 15px;
 }
 .delete{
    padding:0;
