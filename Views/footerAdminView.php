@@ -8,7 +8,7 @@
 
     <a style="color:#fff"  href=<?=$linkPage . "var="?><?=$_SESSION['pages']?>&action=decr >< </a>
     <!--page acutel-->
-    <?=$_SESSION['pages']?>
+    <?=$_SESSION['displayPages'] + 1?>
     /
     <!--page totale-->
     <?=$maxPage?>

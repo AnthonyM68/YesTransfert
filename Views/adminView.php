@@ -54,19 +54,17 @@ $data = listData($pdo);
                     } else {
                         echo 'Veuillez vérifier votre ID car il n\'existe pas dans la base de données';
                     }
-  
-                    //Affiche la BDD après suppression
 
-                    $listEntree = numberTab(listData($pdo), $_SESSION['pages'], $maxByPage);
+                    //Affiche la BDD après suppression
+                    $listEntree = numberTab(listData($pdo), $_SESSION['start'], $maxByPage);
                     $newPage = new Page($listEntree);
                     echo $newPage->page();
 
                     $maxPage = calculPageTotal($entree, $maxByPage);
                     
                 } else {
-                    
-                    //Affiche la BDD actuel
 
+                    //Affiche la BDD actuel
                     $listEntree = numberTab(listData($pdo), $_SESSION['start'] , $maxByPage);
                     $newPage = new Page($listEntree);
                     echo $newPage->page();

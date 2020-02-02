@@ -6,45 +6,42 @@ $maxByPage = 10;
 $entree = count(listData($pdo));
 $linkPage = "http://localhost/yestransfert/index.php?page=admin&";
 $debut = 0;
-$_SESSION['pages'] = 0;
 $_SESSION['start'] = 0;
 
-
-if (!isset($_GET['var'])) { 
-
-    if($entree != 0){
-        $_SESSION['pages'] = 1;
-    } 
+if (!isset($_GET['var'])) {
+    $var = 0;
+    $_SESSION['pages'] = $var;
+    $_SESSION['displayPages'] = $var;
 } else {
-    if($_GET['var'] === 0){
-        $_SESSION['start'] = 10;
-    } else {
-        $_SESSION['pages'] = $_GET['var'];
-        $_SESSION['start'] = $_SESSION['pages'] * 10;
-    }
-    
+    $var = $_GET['var'];
 }
 if (isset($_GET['action'])) {
-    
     if ($_GET['action'] == 'incr') {
-        if (calculPageTotal($entree, $maxByPage) != $_SESSION['pages']) {
-            $_SESSION['pages']++; 
+        if ($_SESSION['displayPages'] < calculPageTotal($entree, $maxByPage) - 1) {
+            $_SESSION['displayPages']++;
+            $_SESSION['start'] = $_SESSION['displayPages'] * 10;
+            $_SESSION['pages'] = $_SESSION['displayPages'];
+        } else {
+            $_SESSION['start'] = $_SESSION['displayPages'] * 10;
         }
-
-    } else if ($_GET['action'] == 'decr') {
-        if($_SESSION['pages'] != 1) {
-            $_SESSION['pages']--;
-        } 
+    }
+    if ($_GET['action'] == 'decr') {
+        if ($_SESSION['displayPages'] > 0) {
+            $_SESSION['displayPages']--;
+            $_SESSION['start'] = $_SESSION['displayPages'] * 10;
+            $_SESSION['pages'] = $_SESSION['displayPages'];
+        } else {
+            $_SESSION['start'] = $_SESSION['displayPages'] * 10;
+        }
     }
 }
-
 ////Calcul le nombre de page en fonction des entrée
 function calculPageTotal($entree, $maxByPage)
 {
     $comptEntree = 0;
     $maxPage = 0;
     while ($comptEntree < $entree) {
-        
+
         if ($comptEntree == $maxByPage && $comptEntree <= $entree) {
             $maxPage += 1;
             $maxByPage += 10;
