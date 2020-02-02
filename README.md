@@ -31,3 +31,11 @@ function delete() in database and file in the serveur deletFile()
 working of page Admin for result upload
 style CSS
 layout function and sort results
+
+01/02/2019
+Page change function in preparation
+
+02/02/2019
+Change of pages and functional input counter
+Improvement of the Admin interface style, color and Bootstrap alert
+
