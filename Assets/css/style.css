@@ -59,8 +59,6 @@ form {
    -moz-border-radius: 5px;
    -ms-border-radius: 5px;
    -o-border-radius: 5px;
-   color: #679c4d;
-   background-color: #c8fb19;
    text-align: center;
 }
 .response-error{
@@ -69,8 +67,6 @@ form {
    -moz-border-radius: 5px;
    -ms-border-radius: 5px;
    -o-border-radius: 5px;
-   color: #930031;
-   background-color: #ff7d7d;
    text-align: center;
 }
 

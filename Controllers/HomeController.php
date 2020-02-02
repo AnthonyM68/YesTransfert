@@ -6,8 +6,8 @@ $emailNoSend      = false;
 $emptyDest        = "Email Destinataire";
 $emptyExp         = "Email Expéditeur";
 $displayDivError  = '';
-$divResponseError = '<div class="response-error form-control">';
-$divResponseValid = '<div class="response-valid form-control">';
+$divResponseError = '<div class="alert-danger response-error form-control">';
+$divResponseValid = '<div class="alert-success response-valid form-control">';
 $closeDiv         = '</div>';
 $sujetGen         = "L'expéditeur n'a pas laissé de message.";
 $messageGen       = "Ce fichier a été généré par Yes Transfert.";
@@ -50,7 +50,7 @@ if (isset($_POST['uploadform']) && !empty($_POST)) {
             $emptyExp = 'Email Expéditeur non valide';
         }
     } else {
-        $displayDivError .= $divResponseError . 'L\'adresse email Expéditeur est vide1' . $closeDiv;
+        $displayDivError .= $divResponseError . 'L\'adresse email Expéditeur est vide' . $closeDiv;
     }
 
     //check email destinataire
@@ -62,7 +62,7 @@ if (isset($_POST['uploadform']) && !empty($_POST)) {
             $emptyDest = 'Email Destinataire non valide';
         }
     } else {
-        $displayDivError .= $divResponseError . 'L\'adresse email Destinataire est vide1.' . $closeDiv;
+        $displayDivError .= $divResponseError . 'L\'adresse email Destinataire est vide.' . $closeDiv;
     }
 
     // Testons si le fichier a bien été chargé et s'il n'y a pas d'erreur au chargement du fichier
