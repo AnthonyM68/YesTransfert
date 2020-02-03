@@ -14,12 +14,8 @@
 
 <body>
    <header>
-      <nav class="navbarAdmin container">
-         <ul class="row">
-            <li class="homeYTransf col h1">
-               <a href="index.php?page=home">Yes Transfert Administrateur</a>
-            </li>
-         </ul>
+      <nav class="navbar container">
+      <a href="index.php?page=home" class="title-YesTransfert">Yes Transfert</a>
       </nav>
    </header>
    <div class="area">
