@@ -6,7 +6,7 @@ $maxByPage = 10;
 $entree = count(listData($pdo));
 $linkPage = "http://localhost/yestransfert/index.php?page=admin&";
 $debut = 0;
-$operation ='';
+$operation = '';
 $_SESSION['start'] = 0;
 $data = listData($pdo);
 
@@ -70,9 +70,8 @@ function numberTab($data, $debut, $maxByPage)
     return $tabX;
 }
 //fonction qui supprime le fichier du serveur
-function deleteFile($adressZip, $operation )
+function deleteFile($adressZip, $operation)
 {
-
     //on récupère l'adresse et nom du fichier
     $adressServer = './' . $adressZip;
     //On le supprime
@@ -84,8 +83,9 @@ function deleteFile($adressZip, $operation )
         //sinon on affiche qu'il a bien été supprimé
         $operation = '<div class="alert alert-success result container">Le fichier a été supprimé du serveur</div>';
     }
+    
     //on retourne le message de réponse
-    return $operation ;
+    return $operation;
 }
 //si aucune page n'est choisis on déclare et initialise les variables
 if (!isset($_GET['var'])) {
@@ -122,4 +122,5 @@ if (isset($_GET['action'])) {
         }
     }
 }
+
 require_once('Views/adminView.php');
