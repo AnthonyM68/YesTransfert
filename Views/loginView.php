@@ -7,9 +7,11 @@
       <input type="text" name="login" class="form-control" placeholder="Identifiant">
       <input type="password" name="password" class="form-control" placeholder="Mot de passe">
       <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Email">
-
       <input type="submit" class="btn btn-primary form-control">
       <a class="form-control inscription" href="index.php?page=register">Inscription au service</a>
+      <!--On affiche le résultat du traitement-->
+      <?= $displayDiv ?>
+      <!--On affiche le résultat du traitement-->
 
    </form>
 </div>
