@@ -17,7 +17,7 @@
       <div class="form-group">
          <input type="submit" class="btn btn-primary form-control" value="Login">
       </div>
-      <a class="form-control inscription" href="">Inscription au service</a>
+      <a class="form-control inscription" href="index.php?page=register">Inscription au service</a>
    </form>
 </div>
 

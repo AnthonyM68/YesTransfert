@@ -9,6 +9,7 @@ $pdo = new PDO('mysql:host=' . $host . ';dbname=' . $dbname, $user, $pass, $opti
 
 function insertUpload($tabValue, $pdo)
 {
+   var_dump($tabValue);
    $req = $pdo->prepare("INSERT INTO client_list (mail_exp, mail_dest, zip, sujet, message)
    VALUES (:mail_exp, :mail_dest, :zip, :sujet, :message)");
 
