@@ -1,16 +1,14 @@
 <?php
 require_once('Models/register.php');
-
+$displayDiv  = '';
+$divResponseError = '<div class="alert-danger response-error form-control">';
+$divResponseValid = '<div class="alert-success response-valid form-control">';
+$closeDiv         = '</div>';
 //Initialise la session
 /*
 session_start();
 $_SESSION['login'] = "";
 $_SESSION['password'] = "";*/
-
-
-//defini les variables et initialise leurs valeurs
-
-
 
 // si le formulaire est envoyé
 if (isset($_POST['registerForm'])) {
@@ -20,12 +18,27 @@ if (isset($_POST['registerForm'])) {
 
       $userlogin = $_POST['login'];
       $userpass = $_POST['password'];
-      register($userlogin, $userpass, $pdo);
-
+      $useremail = $_POST['email'];
+      $data = checkEmail($useremail, $pdo);
+      if ($data) {
+         $displayDiv  = $divResponseError . "Vous êtes déjà Administrateur de Yes Transfert" . $closeDiv;
+      } else {
+         $registry = register($userlogin, $userpass, $useremail, $pdo);
+         if ($registry) {
+            $displayDiv  = $divResponseValid . "Vous voilà désormais Administrateur de Yes Transfert" . $closeDiv;
+            session_start();
+            $_SESSION['login'] = $userlogin;
+            $_SESSION['password'] = $userpass;
+         } else {
+            $displayDiv = $divResponseError . "Une erreur est servenue pendant l'enregistrement" . $closeDiv;
+         }
+         /*
+         header('Location: Admin');
+         exit();*/
+      }
+      //register($userlogin, $userpass, $pdo);
    } else {;
    }
-   /*header('Location: Admin');
-   exit();*/
 }
 
 require_once('Views/registerView.php');
