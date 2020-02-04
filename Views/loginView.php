@@ -2,22 +2,15 @@
 
 <div class="wrapper row">
 
-   <form method="post" id="adminForm" class="form-signin">
-      <h2>Administrateur</h2>
-      <div class="form-group <?php echo (!empty($login_err)) ? 'has-error' : ''; ?>">
-         <label>login</label>
-         <input type="text" name="login" class="form-control">
-      </div>
+   <form method="POST" id="adminForm" class="form-signin">
+      <h2 class="form-signin-heading">Administrateur</h2>
+      <input type="text" name="login" class="form-control" placeholder="Identifiant">
+      <input type="password" name="password" class="form-control" placeholder="Mot de passe">
+      <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Email">
 
-      <div class="form-group <?php echo (!empty($champVide)) ? 'has-error' : ''; ?>">
-         <label>Password</label>
-         <input type="password" name="password" class="form-control">
-         <span class="help-block"><?php echo $champVide . $erreur; ?></span>
-      </div>
-      <div class="form-group">
-         <input type="submit" class="btn btn-primary form-control" value="Login">
-      </div>
+      <input type="submit" class="btn btn-primary form-control">
       <a class="form-control inscription" href="index.php?page=register">Inscription au service</a>
+
    </form>
 </div>
 

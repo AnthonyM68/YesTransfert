@@ -114,7 +114,7 @@ form {
    width:100px;
 }
 /*******LOGIN****************/
-
+/*
 input[type="text"] {
    margin-bottom: -1px;
    border-bottom-left-radius: 0;
@@ -126,7 +126,7 @@ input[type="password"] {
    border-top-left-radius: 0;
    border-top-right-radius: 0;
 }
-
+*/
 
 /****** navbar home ********/
 
@@ -194,10 +194,10 @@ input[type="password"] {
 }
 
 /****** page home *****/
-
+/*
 #adminForm {
    margin-top: 6rem;
-}
+}*/
 
 /****** fond d'ecran *****/
 
@@ -445,6 +445,7 @@ footer {
 /*Extra large devices (large desktops, 1200px and up)*/
 @media (min-width: 1200px) {
    .form-signin {
+      
       max-width: 380px;
    }
 }
