@@ -4,17 +4,10 @@ $displayDiv  = '';
 $divResponseError = '<div class="alert-danger response-error form-control">';
 $divResponseValid = '<div class="alert-success response-valid form-control">';
 $closeDiv         = '</div>';
-//Initialise la session
-/*
-session_start();
-$_SESSION['login'] = "";
-$_SESSION['password'] = "";*/
 
 // si le formulaire est envoyé
-if (isset($_POST['registerForm'])) {
-   // Check si champs "login" non vide
-
-   if (!empty('login') && !empty($_POST['password'])) {
+if ($_SERVER["REQUEST_METHOD"] == "POST")  {
+   if ( !empty('login') && !empty($_POST['password']) && !empty($_POST["email"]) ) {
 
       $userlogin = $_POST['login'];
       $userpass = $_POST['password'];
@@ -32,12 +25,16 @@ if (isset($_POST['registerForm'])) {
          } else {
             $displayDiv = $divResponseError . "Une erreur est servenue pendant l'enregistrement" . $closeDiv;
          }
-         /*
-         header('Location: Admin');
-         exit();*/
       }
-      //register($userlogin, $userpass, $pdo);
-   } else {;
+   } else if ( !empty($_POST["login"]) && empty($_POST["password"]) || !empty($_POST["email"]) && empty($_POST["password"]) ) {
+         $displayDiv = $divResponseError . "Mot de passe vide" . $closeDiv;
+   } 
+   else if (empty($_POST["login"]) && !empty($_POST["password"]) || empty($_POST["email"]) && !empty($_POST["password"])){
+      $displayDiv = $divResponseError . "Identifiant ou Email vide" . $closeDiv;
+   } 
+   else if (( empty($_POST["login"]) && empty($_POST["password"])) && (empty($_POST["email"]) && empty($_POST["password"]))) {
+      $displayDiv = $divResponseError . "Aucun champ remplis: erreur" . $closeDiv;
+   
    }
 }
 

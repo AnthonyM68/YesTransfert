@@ -1,8 +1,6 @@
 <?php
 require_once('Models/admin.php');
 
-//Initialise la session
-
 $_SESSION['login']    = "";
 $_SESSION['password'] = "";
 $displayDiv           = '';
@@ -11,9 +9,6 @@ $divResponseValid     = '<div class="alert-success response-valid form-control">
 $closeDiv             = '</div>';
 // si le formulaire est envoyé
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-   // Check si champs "login" non vide
-   
-
    if (!empty($_POST["login"]) && !empty($_POST["password"]) || !empty($_POST["email"]) && !empty($_POST["password"])) {
 
       $data = checkLogin($pdo);
