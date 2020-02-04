@@ -33,8 +33,10 @@ Page change function in preparation
 >02/02/2020
 Change of pages and functional input counter
 Improvement of the Admin interface style, color and Bootstrap alert
+
 >03/04/2020
 Implementation of an administration registration form
+
 >04/04/2020
 bootstrap stylization
 
