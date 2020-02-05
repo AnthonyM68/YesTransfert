@@ -20,8 +20,9 @@ function checkLogin($pdo)
 //vérifie si l'email existe dans la BDD
 function checkEmail($pdo)
 {
-   $req = $pdo->prepare('SELECT `email` FROM login_admin WHERE `email` = :email');
+   $req = $pdo->prepare('SELECT `email`, `password` FROM login_admin WHERE `email` = :email AND `password` = :password');
    $req->bindValue(':email', $_POST["email"], PDO::PARAM_STR);
+   $req->bindValue(':password', $_POST['password'], PDO::PARAM_STR);
    $req->execute();
    $data = $req->fetch();
    return $data;
