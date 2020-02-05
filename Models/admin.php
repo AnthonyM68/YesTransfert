@@ -17,6 +17,15 @@ function checkLogin($pdo)
    $data = $req->fetch();
    return $data;
 }
+//vérifie si l'email existe dans la BDD
+function checkEmail($pdo)
+{
+   $req = $pdo->prepare('SELECT `email` FROM login_admin WHERE `email` = :email');
+   $req->bindValue(':email', $_POST["email"], PDO::PARAM_STR);
+   $req->execute();
+   $data = $req->fetch();
+   return $data;
+}
 // Récupère la liste des entrées de la BDD
 function listData($pdo)
 {

@@ -7,20 +7,35 @@ $displayDiv           = '';
 $divResponseError     = '<div class="alert-danger response-error form-control">';
 $divResponseValid     = '<div class="alert-success response-valid form-control">';
 $closeDiv             = '</div>';
+
+
 // si le formulaire est envoyé
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-   if (!empty($_POST["login"]) && !empty($_POST["password"]) || !empty($_POST["email"]) && !empty($_POST["password"])) {
+   if (!empty($_POST["login"]) && !empty($_POST["password"])){
 
-      $data = checkLogin($pdo);
-      if ($data !== false) {
+      $checkLogin = checkLogin($pdo);
+      if ($checkLogin !== false) {
          session_start();
-         $_SESSION['login'] = $data['login'];
-         $_SESSION['password'] = $data['password'];
+         $_SESSION['login'] = $checkLogin['login'];
+         $_SESSION['password'] = $checkLogin['password'];
+         header('Location: Admin');
+         exit();
+      } 
+   } else if (!empty($_POST["email"]) && !empty($_POST["password"])){
+
+      $checkEmail = checkEmail($_POST["email"], $pdo);
+      if ($checkEmail !== false) {
+         session_start();
+         $_SESSION['email'] = $checkEmail['email'];
+         $_SESSION['password'] = $checkEmail['password'];
          header('Location: Admin');
          exit();
       }
-   }  
-   else if (!empty($_POST["login"]) && empty($_POST["password"]) || !empty($_POST["email"]) && empty($_POST["password"])){
+   } else {
+      $displayDiv = $divResponseError . "Vous n'êtes pas inscrit au service" . $closeDiv;
+
+   }
+   if (!empty($_POST["login"]) && empty($_POST["password"]) || !empty($_POST["email"]) && empty($_POST["password"])){
       $displayDiv = $divResponseError . "Mot de passe vide" . $closeDiv;
    } 
    else if (empty($_POST["login"]) && !empty($_POST["password"]) || empty($_POST["email"]) && !empty($_POST["password"])){
