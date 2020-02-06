@@ -16,6 +16,7 @@
    <header>
       <nav class="navbar container">
       <a href="index.php?page=home" class="title-YesTransfert">Yes Transfert</a>
+      <button id="dele-administration" onclick="">Désactiver Administration</button>
       </nav>
    </header>
    <div class="area">

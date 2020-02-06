@@ -385,10 +385,10 @@ td {
 /****** footer *******/
 
 footer {
-   position: fixed;
+   /*position: fixed;
    height: auto;
-   bottom: 0;
-   text-align: center;
+
+   text-align: center;*/
    background-color: rgba(74, 88, 128, 0.774);
    border-radius: 10px 10px 0 0;
    -webkit-border-radius: 10px 10px 0 0;
