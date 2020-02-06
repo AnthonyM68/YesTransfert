@@ -11,7 +11,6 @@
       <?= $displayDiv ?>
       <!--On affiche le résultat du traitement-->
       <input type="submit" class="btn btn-primary form-control">
-      <a class="form-control inscription" href="index.php?page=register">Inscription au service</a>
    </form>
 </div>
 
