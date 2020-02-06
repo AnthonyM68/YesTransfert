@@ -8,6 +8,7 @@ $divResponseError     = '<div class="alert-danger response-error form-control">'
 $divResponseValid     = '<div class="alert-success response-valid form-control">';
 $closeDiv             = '</div>';
 
+
 // si le formulaire est envoyé
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
    if (!empty($_POST["login"]) && !empty($_POST["password"])){
@@ -42,5 +43,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       $displayDiv = $divResponseError . "Aucun champ remplis: erreur" . $closeDiv;
    } 
 }
-
 require_once('Views/loginView.php');

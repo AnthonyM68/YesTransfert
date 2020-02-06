@@ -14,7 +14,6 @@
       <!--On affiche le résultat du traitement-->
       <?= $displayDiv ?>
       <!--On affiche le résultat du traitement-->
-
    </form>
 </div>
 

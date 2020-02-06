@@ -7,6 +7,16 @@ $options = [
 ];
 $pdo = new PDO('mysql:host=' . $host . ';dbname=' . $dbname, $user, $pass, $options);
 
+//vérifie que l'administration est bien activé
+
+function if_desactivate($pdo){
+   $req = $pdo->prepare('SELECT `desactivate` FROM activate_admin WHERE `desactivate` = :desactivate');
+   $req->bindValue(':desactivate', $_POST["login"], PDO::PARAM_STR);
+   $req->execute();
+   $data = $req->fetch();
+   return $data;
+}
+
 //vérifie si le password correspond au login saisie pas l'utilisateur
 function checkLogin($pdo)
 {

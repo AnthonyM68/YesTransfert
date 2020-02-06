@@ -12,24 +12,25 @@
    <link rel="stylesheet" href="Assets/css/style.css">
 </head>
 
+
 <body>
    <header>
       <nav class="navbar container">
-      <a href="index.php?page=home" class="title-YesTransfert">Yes Transfert</a>
-      <button id="dele-administration" onclick="">Désactiver Administration</button>
+         <a href="index.php?page=home" class="title-YesTransfert">Yes Transfert</a>
+         <button type="submit" id="dele-administration" onclick="test();">Désactiver Administration</button>
       </nav>
    </header>
    <div class="area">
-    <ul class="circles">
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-    </ul>
-</div>
+      <ul class="circles">
+         <li></li>
+         <li></li>
+         <li></li>
+         <li></li>
+         <li></li>
+         <li></li>
+         <li></li>
+         <li></li>
+         <li></li>
+         <li></li>
+      </ul>
+   </div>
